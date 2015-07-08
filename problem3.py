@@ -1,5 +1,5 @@
 def chk_num(line):
-	count = 0
+	count = 0	
 	for letter in line:
 		if letter.isdigit():
 			count += 1
@@ -27,17 +27,13 @@ def chk_upcase(line):
 # if has at least 4 numbers
 # if has at least 2 lowercase letters
 # if has at least 4 uppercase
-def valid_pwd():
-	f = open('gistfile.txt', 'r')
-	
+def valid_pwd(s):
+	f = open(s, 'r')
 	count = 0
-
-	while True:
-		line = f.readline()	
-		if chk_lowcase(line) and chk_upcase(line) and chk_lowcase(line):
+	for line in f:
+		if chk_lowcase(line) and chk_upcase(line) and chk_num(line):
 			count += 1
 
-		if len(line) == 0:
-			break
-
 	print count
+
+valid_pwd('gistfile.txt')
